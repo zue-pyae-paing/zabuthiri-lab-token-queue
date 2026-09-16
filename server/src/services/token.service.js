@@ -102,6 +102,7 @@ const toDisplayPatient = (patient) => {
     id: patient._id,
     token: patient.token,
     age: patient.age,
+    patientName: patient.patientName, // Include patientName in the display data
   };
 };
 

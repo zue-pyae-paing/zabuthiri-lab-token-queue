@@ -34,25 +34,39 @@ const QueueList = () => {
           queue.map((patient, index) => (
             <div
               key={patient._id}
-              className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 px-4 py-3"
+              className="group flex items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 py-3.5 shadow-sm transition-all duration-200 hover:border-blue-100 hover:bg-blue-50/40"
             >
-              <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-xs font-black text-slate-400">
-                  {index + 1}
-                </span>
+              {/* Patient */}
+              <div className="flex min-w-0 items-center gap-3">
+                {/* Queue Position */}
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-violet-50 text-sm font-black text-blue-600">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
 
-                <div>
-                  <p className="text-sm font-black text-slate-900">
-                    {patient.token}
+                {/* Patient Info */}
+                <div className="min-w-0">
+                  <p
+                    className="max-w-[220px] truncate text-sm font-extrabold leading-5 text-slate-900"
+                    title={patient.patientName}
+                  >
+                    {patient.patientName
+                      .trim()
+                      .toLowerCase()
+                      .replace(/\b\w/g, (char) => char.toUpperCase())}
                   </p>
 
-                  <p className="text-xs font-medium text-slate-500">
-                    {patient.patientName}
-                  </p>
+                  <div className="mt-1 flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+
+                    <span className="text-[11px] font-semibold text-slate-400">
+                      Waiting
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <span className="text-xs font-semibold text-slate-400">
+              {/* Age */}
+              <span className="ml-3 shrink-0 rounded-lg bg-slate-50 px-2.5 py-1.5 text-xs font-bold text-slate-500">
                 {patient.age} yrs
               </span>
             </div>

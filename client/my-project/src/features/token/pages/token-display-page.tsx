@@ -23,7 +23,7 @@ const TokenDisplayPage = () => {
       setError(null);
 
       const data = await getDisplaySnapshotApi();
-      
+      console.log(data, "data");
       setSnapshot(data);
     } catch (error: any) {
       setError(

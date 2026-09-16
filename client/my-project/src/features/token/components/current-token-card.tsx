@@ -6,6 +6,7 @@ interface CurrentTokenCardProps {
 }
 
 const CurrentTokenCard = ({ patient }: CurrentTokenCardProps) => {
+  console.log("CurrentTokenCard patient:", patient); // Debugging lin
   return (
     <section className="relative col-span-7 overflow-hidden rounded-[2rem] bg-gradient-to-br from-blue-600 via-blue-700 to-violet-700 p-[3vw] text-white shadow-xl">
       {/* Background decorations */}
@@ -41,44 +42,66 @@ const CurrentTokenCard = ({ patient }: CurrentTokenCardProps) => {
 
         {/* Main Content */}
         <div className="relative flex flex-1 flex-col items-center justify-center">
-          {/* Small label */}
-          <p className="mb-[1vh] text-[clamp(12px,0.8vw,15px)] font-bold uppercase tracking-[0.3em] text-blue-200">
-            Token Number
+          {/* Label */}
+          <p className="mb-[1.5vh] text-[clamp(12px,0.8vw,15px)] font-bold uppercase tracking-[0.3em] text-blue-200">
+            Patient Name
           </p>
 
-          {/* Token */}
-          <span className="text-[clamp(76px,10.5vw,185px)] font-black leading-[0.85] tracking-[-0.07em] drop-shadow-2xl">
-            {patient?.token ?? "---"}
-          </span>
-
-          {/* Accent */}
-          <div className="mt-[2.5vh] flex items-center gap-3">
-            <div className="h-1 w-16 rounded-full bg-cyan-300" />
-            <div className="h-1 w-3 rounded-full bg-white/50" />
-            <div className="h-1 w-2 rounded-full bg-white/30" />
-          </div>
-
-          {/* Patient Info */}
+          {/* Patient Name */}
           {patient ? (
-            <div className="mt-[2.5vh] flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 px-5 py-3 backdrop-blur-md">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15">
-                <UserRound className="h-5 w-5 text-blue-100" />
+            <>
+             <h2
+  className={`
+    max-w-[95%] whitespace-nowrap text-center font-black leading-none
+    tracking-[-0.035em] drop-shadow-2xl
+    ${
+      patient.patientName.length >=4
+        ? "text-[clamp(28px,3vw,52px)]"
+        : patient.patientName.length >= 18
+          ? "text-[clamp(34px,3.5vw,62px)]"
+          : patient.patientName.length >= 10
+            ? "text-[clamp(40px,4vw,74px)]"
+            : "text-[clamp(48px,5vw,90px)]"
+    }
+  `}
+>
+  {patient.patientName}
+</h2>
+
+              {/* Accent */}
+              <div className="mt-[2.5vh] flex items-center gap-3">
+                <div className="h-1 w-16 rounded-full bg-cyan-300" />
+                <div className="h-1 w-3 rounded-full bg-white/50" />
+                <div className="h-1 w-2 rounded-full bg-white/30" />
               </div>
 
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-blue-200">
-                  Patient Age
-                </p>
+              {/* Patient Age */}
+              <div className="mt-[2.5vh] flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 px-5 py-3 backdrop-blur-md">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15">
+                  <UserRound className="h-5 w-5 text-blue-100" />
+                </div>
 
-                <p className="text-[clamp(18px,1.4vw,26px)] font-extrabold leading-tight">
-                  {patient.age} years
-                </p>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-blue-200">
+                    Patient Age
+                  </p>
+
+                  <p className="text-[clamp(18px,1.4vw,26px)] font-extrabold leading-tight">
+                    {patient.age} years
+                  </p>
+                </div>
               </div>
-            </div>
+            </>
           ) : (
-            <p className="mt-[2.5vh] text-[clamp(20px,1.6vw,30px)] font-bold text-blue-100">
-              Please wait
-            </p>
+            <>
+              <h2 className="text-[clamp(42px,5vw,80px)] font-black leading-none tracking-tight">
+                ---
+              </h2>
+
+              <p className="mt-[2.5vh] text-[clamp(20px,1.6vw,30px)] font-bold text-blue-100">
+                Please wait
+              </p>
+            </>
           )}
         </div>
 

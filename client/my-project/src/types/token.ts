@@ -28,6 +28,7 @@ export interface QueueSnapshot {
 export interface DisplayPatient {
   id: string;
   token: string;
+  patientName: string;
   age: number;
 }
 
