@@ -1,10 +1,10 @@
-import { useCallback, useEffect } from "react";
+import {  useEffect } from "react";
 
 import { ArrowLeft, FlaskConical } from "lucide-react";
 
 import { Link } from "react-router-dom";
 
-import ControlActions from "../components/control-actions";
+
 import QueueList from "../components/queue-list";
 
 import { useTokenStore } from "../store/token-store";
