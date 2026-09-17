@@ -50,12 +50,12 @@ const CurrentTokenCard = ({ patient }: CurrentTokenCardProps) => {
           {/* Patient Name */}
           {patient ? (
             <>
-             <h2
-  className={`
-    max-w-[95%] whitespace-nowrap text-center font-black leading-none
+              <h2
+                className={`
+    max-w-[95%] whitespace-nowrap text-center font-black leading-none capitalize
     tracking-[-0.035em] drop-shadow-2xl
     ${
-      patient.patientName.length >=4
+      patient.patientName.length >= 4
         ? "text-[clamp(28px,3vw,52px)]"
         : patient.patientName.length >= 18
           ? "text-[clamp(34px,3.5vw,62px)]"
@@ -64,9 +64,9 @@ const CurrentTokenCard = ({ patient }: CurrentTokenCardProps) => {
             : "text-[clamp(48px,5vw,90px)]"
     }
   `}
->
-  {patient.patientName}
-</h2>
+              >
+                {patient.patientName}
+              </h2>
 
               {/* Accent */}
               <div className="mt-[2.5vh] flex items-center gap-3">
